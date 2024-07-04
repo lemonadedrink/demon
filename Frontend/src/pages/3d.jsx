@@ -92,7 +92,7 @@ function Box(props) {
           }).then((result) => {
             if (result.isConfirmed) {
          //redirect to google in new tab and reload that tab as well
-              window.open(`localhost:5173/edit-rack/${id}`, "_notbl");
+              window.open(`/edit-rack/${id}`, "_notbl");
               //redirectTo("localhost:3000");
 
             } else if (result.dismiss === Swal.DismissReason.cancel) {
@@ -113,7 +113,7 @@ function Box(props) {
         }).then((result) => {
           if (result.isConfirmed) {
             //redirect to google in new tab
-            window.open(`localhost:5173/edit-racks/${id}`, "_notbl");
+            window.open(`/edit-racks/${id}`, "_notbl");
           } else if (result.dismiss === Swal.DismissReason.cancel) {
             // //setting the clicked value to false
             // click(false);
