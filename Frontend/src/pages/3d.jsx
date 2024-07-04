@@ -145,15 +145,7 @@ function Train() {
   const ref = useRef()
   const scroll = useScroll()
   const [cabin] = useGLTF(['/cabin-transformed.glb'])
-  // const Box = ({ color, position }) => (
-  //   <mesh position={position}>
-  //     <boxGeometry args={[0.5, 0.5, 0.5]} />
-  //     <meshStandardMaterial color={color} />
-  //   </mesh>
-  // );
-
-  //accessing the data from the csv file and checking for headers
-  // console.log("Data from CSV file");
+ 
 
 
 
@@ -170,7 +162,7 @@ function Train() {
         axios.get('http://localhost:3000/pallets')
             .then(res => {
                 setRacks(res.data.data)
-                //appendign all to rax
+                
                 rax = res.data.data;
                 setLoading(false)
             })
