@@ -41,9 +41,11 @@ vales["6"] = []
 function Box(props) {
 
   const ref = useRef()
+  const id=props.Name;
   // Hold state for hovered and clicked events
   const [hovered, hover] = useState(false)
   const [clicked, click] = useState(false)
+  // console.log(id);
   // Subscribe this component to the render-loop, rotate the mesh every frame
   useFrame((state, delta) => {
     if (clicked) {
@@ -89,8 +91,8 @@ function Box(props) {
             cancelButtonText: 'Go Back',
           }).then((result) => {
             if (result.isConfirmed) {
-              //redirect to google in new tab and reload that tab as well
-              window.open("localhost:5173/add-rack", "_notbl");
+         //redirect to google in new tab and reload that tab as well
+              window.open(`localhost:5173/edit-rack/${id}`, "_notbl");
               //redirectTo("localhost:3000");
 
             } else if (result.dismiss === Swal.DismissReason.cancel) {
@@ -111,7 +113,7 @@ function Box(props) {
         }).then((result) => {
           if (result.isConfirmed) {
             //redirect to google in new tab
-            window.open("localhost:3000/about/23", "_blank");
+            window.open(`localhost:5173/edit-racks/${id}`, "_notbl");
           } else if (result.dismiss === Swal.DismissReason.cancel) {
             // //setting the clicked value to false
             // click(false);
@@ -207,7 +209,7 @@ function Train() {
           {(name)}
         </Text>
         {/* console.log(data) */}
-        <models.Cabin color={color} scale={[5, 1, 2]} />
+        <models.Cabin color={color} scale={[6, 1, 2]} />
         
 
         <Suspense fallback={null}>
@@ -219,13 +221,14 @@ function Train() {
 
                     position={getCoordinates(data['Aisle'], data['Rack'], 0)}
 
-                    scale={[1.5, 3.5, 2.5]}
+                    scale={[1.7, 3.5, 2.5]}
                   />
 
-                  <Box position={getCoordinates(data['Aisle'],data['Rack'],data['Level'])} />
+                  <Box position={getCoordinates(data['Aisle'],data['Rack'],data['Level'])} Name={data['_id']}  />
                   {/* <Box position={[data['x'], data['y'] + 2.5, data['z']]} />
                   <Box position={[data['x'], data['y'] + 4.3, data['z']]} /> */}
                 </group>
+                
               );
 
 
